@@ -1,4 +1,4 @@
-# Download-all-videos-of-a-YOUTUE-channel-as-MP3-audio
+# Download-all-videos-of-a-YOUTUBE-channel-as-MP3-audio
 Download all the videos of a YOUTUBE channel as MP3 audio file.
 
 1 - Go to YOUTUBE and select the channel you want to download the files
