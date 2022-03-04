@@ -19,12 +19,17 @@ def AudioDownload(video_link, destination, amount):
     # conversion to mp3 file
     base, ext = os.path.splitext(out_file)
     new_file = base + '.mp3'
-    os.rename(out_file, new_file)
+    try:
+        os.rename(out_file, new_file)
+
+
+    except FileExistsError:
+        os.remove(out_file)
 
     global count
     count = count + 1
 
-    #function to display progress
+    # function to display progress
     progress(count, amount)
 
 def DownloadChannel(channel_link):
@@ -36,6 +41,9 @@ def DownloadChannel(channel_link):
 
     for url in list_videos:
         AudioDownload(url, destination, amount)
+
+    #RENAME FILES WITH PREFIX
+
 
 def progress(count, amount):
     # width of the progress bar
@@ -50,4 +58,6 @@ def progress(count, amount):
 
 DownloadChannel(channel)
 
+
+print("All the audios were downloaded!")
 
