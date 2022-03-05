@@ -1,4 +1,5 @@
 # THIS IS THE VERSION I'M WORKING ON TO DO THE VERIFICATION OF THE VIDEOS
+# VERIFICATION BRANCH
 
 from pytube import YouTube
 from pytube import Playlist
@@ -34,23 +35,23 @@ def AudioDownload(video_link, destination, amount):
 
 def DownloadChannel(channel_link):
     list_videos = Playlist(channel_link)
-    amount = len(list_videos)
+    DownloadChannel.amount = len(list_videos)
     # choose the directory you want to download the files
     print("Enter the destination (leave blank for current directory)")
     destination = str(input(">> ")) or "."
 
     for url in list_videos:
-        AudioDownload(url, destination, amount)
+        AudioDownload(url, destination, DownloadChannel.amount)
 
     #RENAME FILES WITH PREFIX
 
 
 def progress(count, amount):
     # width of the progress bar
-    width = 40;
+    progress.width = 40;
     percent=count/amount
-    left = math.ceil(width * (percent))
-    right = width - left
+    left = math.ceil(progress.width * (percent))
+    right = progress.width - left
     tags = '#' * left
     spaces = " " * right
     percents = f"{(percent*100):.0f}%"
@@ -58,6 +59,5 @@ def progress(count, amount):
 
 DownloadChannel(channel)
 
-
-print("All the audios were downloaded!")
-
+CompleteProgress = '#' * progress.width
+print("All the audios were downloaded!. Progress: ",DownloadChannel.amount,"/",DownloadChannel.amount," [",CompleteProgress,"] 100% ","\r", end="")
